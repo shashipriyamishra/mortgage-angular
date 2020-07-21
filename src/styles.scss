@@ -1,0 +1,77 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.example-spacer {
+    flex: 1 1 auto;
+  }
+.light-font{
+    font-weight: 300;
+}
+.error{
+    color: red;
+}
+a{
+    text-decoration: none;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+ 
+  background: none !important;
+}
+.margin-right-left-10{
+    margin-left: 10px;;
+}
+.movie-list-container{
+    .mat-card-header-text{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+.search-box{
+    display: flex;
+    justify-content: flex-end;
+    width: 25%;
+    .mat-form-field-underline{
+        background: #fff;
+    }
+    .mat-form-field-label{
+        color: #fff;
+        mat-label{
+            color: #fff;
+        }
+    }
+    mat-form-field{
+       width: 100%;
+    }
+}
+.header{
+    .header-row{
+        background: #fff;
+    }
+}
+.register-page{
+    .mat-horizontal-content-container {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .register-page{
+        .mat-horizontal-content-container {
+            width: 100%;
+        }
+    }
+    mat-button-toggle-group{
+        width: 52%;
+    }
+  }

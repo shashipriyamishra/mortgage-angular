@@ -1,0 +1,50 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "accountSummary":[ 
+    {
+      "accountNumber": 8,
+      "accountType": "Transactional Account",
+      "balance": 6346248,
+      "st": [
+        {
+          "accountId": 111,
+          "amount": 89890,
+          "comment": "Transactional Account",
+          "statementId": 0,
+          "transactionDate": "2020-07-21T09:34:12.545Z"
+        }
+      ]
+    },
+    {
+      "accountNumber": 17823784,
+      "accountType": "Mortgage",
+      "balance": 236743,
+      "st": [
+        {
+          "accountId": 0,
+          "amount": 8989890,
+          "comment": "Mortgage account",
+          "statementId": 0,
+          "transactionDate": "2020-07-21T09:34:12.545Z"
+        }
+      ]
+    }
+  ]
+ 
+}

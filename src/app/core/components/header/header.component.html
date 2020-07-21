@@ -1,0 +1,29 @@
+<header><mat-toolbar class="header-row" color="primary">
+    <mat-toolbar-row>
+    <span class="logo " routerLink="/">MORTGAGE</span>
+        <span class="example-fill-remaining-space"></span>
+        <span class="align-center"></span>
+        <span class="example-spacer"></span>
+        <button *ngIf="!localstorage" class="light-font" mat-button routerLink="/login">Login / Register</button>
+        <span  *ngIf="localstorage && localstorage.userId" >Welcome {{localstorage.fullUserName}}</span>
+        <span class="margin-left-25" *ngIf="localstorage && localstorage.userId" (click)="logout()">Logout</span>
+        <button name="vertical menu" mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        
+        <span>Menu 1</span>
+      </button>
+      <button mat-menu-item disabled>
+        
+        <span>Menu 2</span>
+      </button>
+      <button mat-menu-item>
+        
+        <span>Menu 3</span>
+      </button>
+    </mat-menu>
+     </mat-toolbar-row>
+     </mat-toolbar>
+    </header>

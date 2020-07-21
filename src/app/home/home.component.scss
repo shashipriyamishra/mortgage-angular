@@ -1,0 +1,41 @@
+.home-container{
+    min-height: 400px;
+    h1,h3{
+        font-size: 28px;
+        color: #000;
+        font-weight: 400;
+        margin-bottom: 20px;
+
+    }
+    p{
+        font-size: 20px;
+        color: #000;
+        font-weight: 300;
+    }
+    .banner{
+        background: #39b8ea;
+        display: flex;
+        text-align: center;
+        padding: 80px;
+        justify-content: center;
+        flex-direction: column;
+
+    }
+    .about{
+        background: #fff;
+        display: flex;
+        text-align: center;
+        padding: 80px;
+        justify-content: center;
+        flex-direction: column;
+
+    }
+    
+}
+.movie{
+    font-size: 55px;
+    color: blue;
+}
+.movie-about{
+    font-size: 55px;
+}

@@ -1,0 +1,79 @@
+mat-card {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 20px 50px;
+    
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+  }
+  
+  mat-form-field {
+    display: block;
+  }
+  mat-card-title{
+      margin-left: 0;
+  }
+  .mat-card-header-text{
+    margin-left: 0 !important;
+  }
+  .login-container{
+      padding: 30px;
+      min-height: 400px;
+      background:#4887b0;
+      .example-section{
+          display: flex;
+          justify-content: flex-start;
+      }
+      .example-margin{
+          margin-right: 15px;
+      }
+      .type-user{
+          display: flex;
+          justify-content: flex-start;
+          flex-direction: row;
+      }
+  }
+  .mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+  .mat-form-field {
+    
+  }
+  mat-button-toggle-group{
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+  }
+  .form{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      
+  }
+  .register-row{
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+h3{
+    color: green;
+    font-size: 22px;
+}
+.login-acc{
+    cursor: pointer;
+    margin: 15px 0;
+    display: block;
+    color: blue;
+    &:focus{
+        outline: none;
+    }
+}
+@media only screen and (max-width: 600px) {
+
+    mat-button-toggle-group{
+        width: 52%;
+    }
+  }
+

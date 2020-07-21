@@ -1,0 +1,23 @@
+<section class="acc">
+
+    <div class="acc-summ"><h3>Account summary</h3> <span (click)="refresh()">Refresh</span></div>
+
+    <mat-card class="example-card" *ngFor="let account of accountSummary">
+        <mat-card-header>
+          
+          <mat-card-title>{{account.accountType}}</mat-card-title>
+        </mat-card-header>
+        
+        <mat-card-content>
+            <p><b>Balance:</b> {{account.balance}}</p>
+            <h4><b>Account Number:</b> {{account.accountNumber}}</h4>
+          <div *ngFor="let subItem of account['st']"> 
+              <h4 class="statement">Statements </h4> 
+              <p><b>Comment:</b> {{subItem.comment}}</p>
+              <p><b>amount:</b> {{subItem.amount}}</p>
+              <p><b>date:</b> {{subItem.transactionDate}}</p>
+          </div>
+        </mat-card-content>
+        
+      </mat-card>
+</section>

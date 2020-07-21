@@ -1,0 +1,212 @@
+<section class="login-container register-page">
+    <mat-card class="example-card ">
+       <mat-card-header>
+         <mat-card-title>Register</mat-card-title>
+       </mat-card-header>
+       <mat-card-content>
+        <mat-horizontal-stepper [linear]="true" #stepper>
+          <mat-step [stepControl]="firstFormGroup">
+            <form (ngSubmit)="firstStepSubmit()" [formGroup]="firstFormGroup">
+              <ng-template matStepLabel>Type and amount of mortgage</ng-template>
+              <label><b>I'm thinking about</b></label>
+              <mat-form-field appearance="fill">
+                <mat-label>Select</mat-label>
+                <mat-select formControlName="operationType">
+                  <mat-option value="Buying my first home">Buying my first home</mat-option>
+                  <mat-option value="Buying my first bike">Buying my first bike</mat-option>
+                  <mat-option value="Buying my first car">Buying my first car</mat-option>
+                </mat-select>
+              </mat-form-field> 
+              <div class="register-row">
+              <label><b>How many people are applying</b></label>
+              
+              <mat-button-toggle-group #group="matButtonToggleGroup" [formControl]="peopleApplying" name="fontStyle" aria-label="Font Style">
+                <mat-button-toggle value="1">1</mat-button-toggle>
+                <mat-button-toggle value="2">2</mat-button-toggle>
+                <mat-button-toggle value="2">3+</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+              <label><b>How much do you think property will cost?</b></label>
+              <mat-form-field>
+                <mat-label>cost</mat-label>
+                <input type="number"  matInput placeholder="Cost" [formControl]="propertyCost"  required>
+                <mat-error *ngIf="propertyCost.hasError('min') && !propertyCost.hasError('required')">
+                  minimum value should be 100000
+                </mat-error>
+              </mat-form-field>
+              <label><b>How much deposit do you have?</b></label>
+              <mat-form-field>
+                <mat-label>Deposit</mat-label>
+                <input type="number" matInput placeholder="Deposit" [formControl]="deposit"  required>
+                <mat-error *ngIf="deposit.hasError('min') && !deposit.hasError('required')">
+                  minimum value should be 0
+                </mat-error>
+              </mat-form-field>
+              <div>
+                <button type="submit" mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup">
+            <form (ngSubmit)="secondStepSubmit()"  [formGroup]="secondFormGroup">
+              <ng-template matStepLabel>Employment Details</ng-template>
+              <label><b>What is your employment status</b></label>
+              <mat-form-field appearance="fill">
+                <mat-label>Select</mat-label>
+                <mat-select formControlName="employmentStatus" (selectionChange)="employmentChange($event.value)">
+                  <mat-option value="Employed">Employed</mat-option>
+                  <mat-option value="Self employed">Self employed</mat-option>
+                  <mat-option value="Unemployed">Unemployed</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-error *ngIf="employedError">Please select employed to avail mortgage</mat-error> 
+              <label><b>what is your occupation?</b></label>
+              <mat-form-field appearance="fill">
+                <mat-label>Select</mat-label>
+                <mat-select formControlName="occupation">
+                  <mat-option value="Engineer">Engineer</mat-option>
+                  <mat-option value="Product manager">Product manager</mat-option>
+                  <mat-option value="Doctor">Doctor</mat-option>
+                </mat-select>
+              </mat-form-field>  
+              <label><b>What is your contract type?</b></label>
+              <mat-form-field appearance="fill">
+                <mat-label>Select</mat-label>
+                <mat-select formControlName="contractTpye">
+                  <mat-option value="Permanent">Permanent</mat-option>
+                  <mat-option value="contarctual">contarctual</mat-option>
+                  <mat-option value="Govt">Govt</mat-option>
+                </mat-select>
+              </mat-form-field> 
+              
+              <label><b>When did you start this job?</b><mat-icon matTooltip="You have a full time position with a salary and a contract witout an end date">info</mat-icon></label>
+              
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Choose a date</mat-label>
+                  <input matInput formControlName="jobStartDate"  [matDatepickerFilter]="myFilter" [matDatepicker]="picker">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                
+              </mat-form-field>
+              <mat-error *ngIf="daysValidity">job start date must be 90 days back</mat-error> 
+              
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button type="submit" [disabled]="employedError" mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="thirdFormGroup">
+            <form (ngSubmit)="thirdStepSubmit()"  [formGroup]="thirdFormGroup">
+              <ng-template matStepLabel>Personal Details</ng-template>
+             
+              <label><b>Title</b></label>
+              <mat-form-field appearance="fill">
+                <mat-label>Select</mat-label>
+                <mat-select formControlName="title">
+                  <mat-option value="Mr">Mr</mat-option>
+                  <mat-option value="Ms">Ms</mat-option>
+                  <mat-option value="miss">miss</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <label><b>First Name</b></label>
+              <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="First name" [formControl]="firstName" required>
+                <div *ngIf="firstName.hasError('pattern')">  
+                  <mat-error >Only characters are allowed.</mat-error>  
+                </div>  
+              </mat-form-field>
+              <label><b>Middle Name (Where Applicable)</b></label>
+              <mat-form-field>
+                <mat-label>Middle Name</mat-label>
+                <input matInput placeholder="Middle Name" [formControl]="middleName" >
+                <div *ngIf="middleName.hasError('pattern')">  
+                  <mat-error >Only characters are allowed.</mat-error>  
+                </div> 
+              </mat-form-field>
+
+              <label><b>Surname</b></label>
+              <mat-form-field>
+                <mat-label>Surname</mat-label>
+                <input matInput placeholder="Surname" [formControl]="surName" required>
+                <div *ngIf="surName.hasError('pattern')">  
+                  <mat-error >Only characters are allowed.</mat-error>  
+                </div> 
+              </mat-form-field>
+              
+              <label><b>Date of birth</b></label>
+              
+              <mat-form-field appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input [max]="maxDate"  formControlName="dateOfBirth" matInput [matDatepicker]="picker1">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button type="submit" mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="fourthFormGroup">
+            <form   [formGroup]="fourthFormGroup">
+              <ng-template matStepLabel>Contact Details</ng-template>
+              
+              <label><b>What is your preferred contact number?</b></label>
+              <mat-form-field>
+                <mat-label>Contact Number</mat-label>
+                
+                <span matPrefix>+1 &nbsp;</span>
+                <input  formControlName="phoneNumber" type="number" maxlength="14" required type="tel" matInput placeholder="555-555-1234">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+              </mat-form-field>
+              <label><b>What is your email address?</b></label>
+              <mat-form-field>
+                <mat-label>Email Address</mat-label>
+                <input matInput placeholder="Email Address" [formControl]="email" [errorStateMatcher]="matcher" required>
+                <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+                  Please enter a valid email address
+                </mat-error>
+              </mat-form-field>
+
+              <label><b>Please confirm your email address</b></label>
+              <mat-form-field>
+                <mat-label>confirm your email address</mat-label>
+                <input matInput placeholder="confirm your email address" (blur)="onBlurConfirmEmail()" [formControl]="confirmEmail" [errorStateMatcher]="matcher" required>
+                <mat-error *ngIf="confirmEmail.hasError('email') && !confirmEmail.hasError('required')">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="emailNotmatched">
+                  Email does not match
+                </mat-error>
+              </mat-form-field>
+
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button (click)="submitForm()" mat-button matStepperNext>Submit</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            <div *ngIf="granted">
+            <h3>Congratulations your mortgage has been Granted</h3>
+            <p><b>User Id:</b> {{userData && userData.loginUserId}}</p>
+            <p><b>Password:</b> {{userData && userData.password}}</p>
+            <p><b>Current Account Number:</b>{{userData && userData.transactionalAccountNumber}}</p>
+            <p><b>Mortgage number:</b> {{userData && userData.mortgageAccountNumber}}</p>
+            <a class="login-acc"><b routerLink="/login">Login into your account</b></a>
+          </div>
+          <mat-spinner *ngIf="!granted"></mat-spinner>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+       </mat-card-content>
+       
+     </mat-card>
+    </section>

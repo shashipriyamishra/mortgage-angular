@@ -1,0 +1,29 @@
+<section class="login-container">
+<mat-card class="example-card ">
+   <mat-card-header>
+     <mat-card-title>Login</mat-card-title>
+   </mat-card-header>
+   <mat-card-content>
+     <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+       
+             <mat-form-field class="example-full-width">
+             <input matInput placeholder="User Id" formControlName="loginUserId" name="loginUserId" required>
+             <span class="error" *ngIf="submitted && formControls.loginUserId.errors"> userId is required</span>
+             </mat-form-field>
+           <mat-form-field class="example-full-width">
+           <input matInput placeholder="Password" formControlName="password" type="password" name="password" required>
+           <span class="error" *ngIf="submitted && formControls.password.errors"> Password is required</span>
+         </mat-form-field> 
+         <mat-card-actions>
+            <button mat-raised-button routerLink="/"  color="">Cancel</button>
+             <button mat-raised-button type="submit" color="primary">Login</button>
+           </mat-card-actions>
+     </form>
+     <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+   </mat-card-content>
+   <mat-card-content>
+       <span>Not a member?</span> <a class="margin-right-left-10 signup" routerLink="/register">Signup</a>
+   </mat-card-content>
+   
+ </mat-card>
+</section>

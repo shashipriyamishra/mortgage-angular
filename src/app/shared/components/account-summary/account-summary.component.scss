@@ -1,0 +1,27 @@
+.acc{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 30px;
+    min-height: 400px;
+    background-color: #ccc;
+    .acc-summ{
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+    h3{
+        font-size: 30px;
+    }
+}
+mat-card{
+    margin: 20px 0;
+    mat-card-content{
+        padding: 30px 13px;
+    }
+}
+.statement{
+    font-size: 20px;
+    color: blue;
+}

@@ -1,0 +1,52 @@
+
+.movie-container{
+    padding: 30px 40px;
+    
+
+    display: flex;
+    flex-direction: column;
+    .movie-list-row{
+        display: flex;
+        flex-direction: left;
+        justify-content: space-between;
+        .search-box{
+            input{
+                color: #fff;
+            }
+            .mat-form-field-underline{
+                background: #fff;
+            }
+        }
+    }
+    h3{
+        padding: 30px 40px;
+        font-size: 35px;
+        font-weight: 500;
+        color: #fff;
+    }
+    
+    .movie-list-container{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        
+        .mat-card-header-text{
+            margin-left: 0 !important;
+            margin-right: 0;
+        }
+        .example-card{
+            max-width: 300px;
+            margin:0 20px 50px 0;
+        }
+    }
+    
+}
+.watched{
+    color: #fff;
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+    font-size: 20px;
+    cursor: pointer;
+}
